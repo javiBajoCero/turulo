@@ -60,8 +60,8 @@ all: main-build
 main-build: turulo_luminoso_extFLASHtest.elf secondary-outputs
 
 # Tool invocations
-turulo_luminoso_extFLASHtest.elf turulo_luminoso_extFLASHtest.map: $(OBJS) $(USER_OBJS) C:\Users\Javier\Desktop\turulo_luminoso\turulo_luminoso_extFLASHtest\STM32WB5MMGHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "turulo_luminoso_extFLASHtest.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Javier\Desktop\turulo_luminoso\turulo_luminoso_extFLASHtest\STM32WB5MMGHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="turulo_luminoso_extFLASHtest.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+turulo_luminoso_extFLASHtest.elf turulo_luminoso_extFLASHtest.map: $(OBJS) $(USER_OBJS) C:\Users\Javier\Documents\GitHub\turulo\turulo_luminoso_extFLASHtest\STM32WB5MMGHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "turulo_luminoso_extFLASHtest.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Javier\Documents\GitHub\turulo\turulo_luminoso_extFLASHtest\STM32WB5MMGHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="turulo_luminoso_extFLASHtest.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

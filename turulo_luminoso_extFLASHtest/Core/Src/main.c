@@ -48,6 +48,7 @@
 /* USER CODE BEGIN PV */
 S25FL128S_Info_t flashmemoryinfo;
 uint32_t* memPointer=0x90000000;
+uint32_t valuepointedbymemPointer=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,6 +97,11 @@ int main(void)
   MX_QUADSPI_Init();
   /* USER CODE BEGIN 2 */
   int32_t memstatus=S25FL128S_GetFlashInfo(&flashmemoryinfo);
+          memstatus=S25FL128S_ChipErase(&hqspi, S25FL128S_QPI_MODE);
+  	  	  memstatus=S25FL128S_WriteEnable(&hqspi, S25FL128S_QPI_MODE);
+  		  uint32_t data=0xA;
+  		  memstatus=S25FL128S_PageProgram(&hqspi, S25FL128S_QPI_MODE, &data, 0, 4);
+  		  memstatus=S25FL128S_WriteDisable(&hqspi, S25FL128S_QPI_MODE);
   	  	  memstatus=S25FL128S_EnableMemoryMappedModeSTR(&hqspi, S25FL128S_QPI_MODE);
   /* USER CODE END 2 */
 
@@ -103,9 +109,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  *memPointer=0xA;
-	  memPointer++;
 	  HAL_Delay(1000);
+	  valuepointedbymemPointer=*memPointer;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
